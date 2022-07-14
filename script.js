@@ -2,11 +2,11 @@
 
 window.addEventListener("load", function() {
     const form = document.querySelector("form");
-    let list = document.getElementById("faultyItems");
     let pilot = document.querySelector("input[name=pilotName]");
     let copilot = document.querySelector("input[name=copilotName]");
     let fuelLevel = document.querySelector("input[name=fuelLevel]");
     let cargoMass = document.querySelector("input[name=cargoMass]");
+    let list = document.getElementById("faultyItems");
 
     // checks fields when submit is clicked; calls formSubmission
     form.addEventListener("submit", function(event) {

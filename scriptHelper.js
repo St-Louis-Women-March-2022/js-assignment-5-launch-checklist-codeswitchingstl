@@ -31,6 +31,7 @@ function validateInput(testInput) {
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     // let pilotStatus = document.getElementById
 
+    // pilot status
     if (validateInput(pilot.value) === "Not a Number") {
         list.style.visibility = "visible";
         document.getByElementID("pilotStatus").innerHTML = `Pilot ${pilot.value} is ready for launch.`;
@@ -39,6 +40,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
         return;
     }
 
+    // copilot status
     if (validateInput(copilot.value) === "Not a Number") {
         list.style.visibility = "visible";
         document.getByElementID("copilotStatus").innerHTML = `Copilot ${copilot.value} is ready for launch.`;
@@ -78,16 +80,20 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     }
 }
 
-    
+// fetches planet info from json
 async function myFetch() {
     let planetsReturned;
-    planetsReturned = await fetch().then( function(response) {
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+        return response.json()
         });
-
     return planetsReturned;
 }
 
+// function that selects random index (planet) of array of values; this is truly random, where I did not specify an index
 function pickPlanet(planets) {
+    let randomPlanetIndex = Math.round(Math.random() * planets.length);
+    let randomPlanet = planets[randomPlanetIndex];
+    return randomPlanet;
 }
 
 // module.exports.addDestinationInfo = addDestinationInfo;
